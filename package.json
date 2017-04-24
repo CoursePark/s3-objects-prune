@@ -7,6 +7,10 @@
     "node": "^7.9.0",
     "npm": "^4.2.0"
   },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "node action.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/CoursePark/s3-objects-prune.git"
