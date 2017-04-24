@@ -1,8 +1,8 @@
 FROM node:alpine
 
-COPY package.json /
+COPY package.json .npmrc /
 
-RUN npm install
+RUN npm install --production
 
 COPY action.js /
 
