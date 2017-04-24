@@ -62,7 +62,7 @@ const prefix = process.env.S3_OBJ_PRUNE_AWS_OBJECT_PREFIX;
 const maxKeys = Number.parseInt(process.env.S3_OBJ_PRUNE_MAX_OBJECTS, 10);
 
 function objectKeyToTimestamp(key) {
-	return (new Date(key.replace(prefix, '').replace('.dump', '').replace('_', 'T'))).valueOf();
+	return (new Date(key.replace(prefix, '').replace('.dump', ''))).valueOf();
 }
 
 // main
