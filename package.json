@@ -1,0 +1,17 @@
+{
+  "name": "s3-objects-prune",
+  "version": "0.1.0",
+  "description": "Prune objects in a S3 bucket. Intended to keep backups reasonable.",
+  "main": "action.js",
+  "engines": {
+    "node": "^7.9.0",
+    "npm": "^4.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/CoursePark/s3-objects-prune.git"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.44.0"
+  }
+}
