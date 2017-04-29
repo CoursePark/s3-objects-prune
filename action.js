@@ -45,21 +45,21 @@ function deleteKeys(s3, keySet) {
 const S3 = require('aws-sdk/clients/s3');
 
 const s3 = new S3({
-	region: process.env.S3_OBJ_PRUNE_AWS_REGION === 's3'
+	region: process.env.AWS_REGION === 's3'
 		? 'us-east-1'
-		: process.env.S3_OBJ_PRUNE_AWS_REGION
+		: process.env.AWS_REGION
 	,
 	credentials: {
-		accessKeyId: process.env.S3_OBJ_PRUNE_AWS_ACCESS_KEY_ID,
-		secretAccessKey: process.env.S3_OBJ_PRUNE_AWS_SECRET_ACCESS_KEY,
+		accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+		secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
 	},
 	params: {
-		Bucket: process.env.S3_OBJ_PRUNE_AWS_BUCKET,
+		Bucket: process.env.AWS_BUCKET,
 	},
 });
 
-const prefix = process.env.S3_OBJ_PRUNE_AWS_OBJECT_PREFIX;
-const maxKeys = Number.parseInt(process.env.S3_OBJ_PRUNE_MAX_OBJECTS, 10);
+const prefix = process.env.PRUNE_PREFIX;
+const maxKeys = Number.parseInt(process.env.MAX_OBJECTS, 10);
 
 function objectKeyToTimestamp(key) {
 	return (new Date(key.replace(prefix, '').replace('.dump', ''))).valueOf();
