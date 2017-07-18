@@ -59,10 +59,17 @@ const s3 = new S3({
 });
 
 const prefix = process.env.PRUNE_PREFIX;
+const postfix = process.env.PRUNE_POSTFIX;
 const maxKeys = Number.parseInt(process.env.MAX_OBJECTS, 10);
 
 function objectKeyToTimestamp(key) {
-	return (new Date(key.replace(prefix, '').replace('.dump', ''))).valueOf();
+	if (key.substr(0, prefix.length) !== prefix) {
+		return null;
+	}
+	if (key.substr(-1 * postfix.length) !== postfix) {
+		return null;
+	}
+	return (new Date(key.substr(prefix.length, key.length - prefix.length - postfix.length))).valueOf();
 }
 
 // main
